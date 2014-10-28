@@ -21,36 +21,38 @@ int main() {
   cin>>t;
   while(t--){
     cin>>n;
-    r=n%3;
-    if(r==0){
+    if(n<3){
+      cout<<"-1"<<endl;
+    }else if(n%3==0){
       for(int i=0; i<n; ++i){
 	cout<<5;
       }
       cout<<endl;
     }else{
       threes=n%3;
-      fives=n/3;
+      fives=n-threes;
       r=5-threes;
       threes+=r;
       fives-=r;
 
-      while(fives%3!=0 || threes%5!=0 || fives<3){
+      while((fives%3!=0 || threes%5!=0) && fives>=5){
 	threes+=5;
 	fives-=5;
-	if(fives%3==0 && threes%5==0)break;
+	//if(fives%3==0 && threes%5==0)break;
       }
+
       if(fives%3==0 && threes%5==0){
-	for(int i=0; i<fives*3; ++i){
+	for(int i=0; i<fives; ++i){
 	  cout<<5;
 	}
-	for(int i=0; i<threes*5; ++i){
+	for(int i=0; i<threes; ++i){
 	  cout<<3;
 	}
 	cout<<endl;
       }else{
 	cout<<"-1"<<endl;
       }
-    }
-  }
+    }//end else
+  }//t
   return 0;
 }
